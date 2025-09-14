@@ -1,0 +1,89 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# PyTorch
+*.pth
+*.pt
+*.ckpt
+
+# Data files (uncomment if data should not be tracked)
+# data/raw/
+# data/processed/
+# *.dcm
+# *.nii
+# *.nii.gz
+
+# Logs
+*.log
+logs/
+tensorboard_logs/
+
+# Checkpoints
+checkpoints/
+experiments/models/
+experiments/logs/
+
+# Figures (uncomment if figures should not be tracked)
+# figs/
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+
+# Hydra outputs
+outputs/
+.hydra/
+
+# Weights & Biases
+wandb/
+
+# MLflow
+mlruns/

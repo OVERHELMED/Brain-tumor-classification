@@ -1,0 +1,65 @@
+# Reproducibility Configuration
+seeds:
+  global_seed: 42
+  numpy_seed: 42
+  torch_seed: 42
+  cuda_seed: 42
+
+# Model Configuration
+model:
+  name: "resnet50"
+  pretrained: true
+  num_classes: 2
+
+# Data Configuration
+data:
+  image_size: [224, 224]
+  batch_size: 32
+  num_workers: 4
+  train_split: 0.8
+  val_split: 0.1
+  test_split: 0.1
+
+# Training Configuration
+training:
+  epochs: 100
+  learning_rate: 0.001
+  weight_decay: 1e-4
+  scheduler: "cosine"
+  early_stopping_patience: 10
+
+# Augmentation Configuration
+augmentation:
+  horizontal_flip: 0.5
+  vertical_flip: 0.2
+  rotation_limit: 15
+  brightness_contrast: 0.2
+  gaussian_noise: 0.1
+
+# Paths Configuration
+paths:
+  data_dir: "data/"
+  raw_data_dir: "data/raw/"
+  processed_data_dir: "data/processed/"
+  models_dir: "experiments/models/"
+  logs_dir: "experiments/logs/"
+  figures_dir: "figs/"
+  checkpoints_dir: "experiments/checkpoints/"
+
+# Hardware Configuration
+hardware:
+  device: "auto"  # auto, cpu, cuda
+  mixed_precision: true
+  deterministic: true
+
+# Logging Configuration
+logging:
+  level: "INFO"
+  log_every_n_steps: 10
+  save_model_every_n_epochs: 5
+
+# Experiment Configuration
+experiment:
+  name: "baseline_experiment"
+  tags: ["baseline", "medical_imaging"]
+  notes: "Initial baseline experiment with standard configuration"
