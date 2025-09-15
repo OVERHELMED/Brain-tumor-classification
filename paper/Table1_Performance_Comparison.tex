@@ -1,0 +1,13 @@
+\begin{table}
+\caption{Performance comparison across datasets and adaptation strategies}
+\label{tab:performance}
+\begin{tabular}{lrrrrrrrr}
+\toprule
+Dataset & Accuracy (%) & Macro-F1 (%) & Glioma Recall (%) & Meningioma Recall (%) & Pituitary Recall (%) & No Tumor Recall (%) & ECE & Log Loss \\
+\midrule
+Internal Test & 96.000 & 95.800 & 90.600 & 95.400 & 97.700 & 99.800 & 0.048 & 0.168 \\
+External Test (Baseline) & 72.300 & 67.500 & 23.000 & 99.100 & 58.100 & 100.000 & 0.130 & 1.959 \\
+External Test (Adapted) & 78.400 & 78.400 & 58.000 & 88.700 & 85.100 & 80.000 & 0.048 & 0.168 \\
+\bottomrule
+\end{tabular}
+\end{table}

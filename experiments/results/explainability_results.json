@@ -1,0 +1,56 @@
+{
+  "heatmap_analysis": {
+    "total_images_analyzed": 55,
+    "images_per_class": {
+      "glioma": {
+        "correct": 10,
+        "incorrect": 5
+      },
+      "meningioma": {
+        "correct": 10,
+        "incorrect": 5
+      },
+      "pituitary": {
+        "correct": 10,
+        "incorrect": 5
+      },
+      "notumor": {
+        "correct": 10,
+        "incorrect": 0
+      }
+    }
+  },
+  "faithfulness_metrics": {
+    "glioma": {
+      "average_robustness": 0.9850678196024351,
+      "n_samples_analyzed": 3
+    },
+    "meningioma": {
+      "average_robustness": 0.779725245355689,
+      "n_samples_analyzed": 3
+    },
+    "pituitary": {
+      "average_robustness": 0.8537483086240417,
+      "n_samples_analyzed": 3
+    },
+    "notumor": {
+      "average_robustness": 0.8962341241722841,
+      "n_samples_analyzed": 3
+    }
+  },
+  "output_directories": {
+    "heatmaps_base_dir": "figs/xai/mobilenetv2/",
+    "class_directories": [
+      "figs/xai/mobilenetv2/glioma/",
+      "figs/xai/mobilenetv2/meningioma/",
+      "figs/xai/mobilenetv2/pituitary/",
+      "figs/xai/mobilenetv2/notumor/"
+    ]
+  },
+  "method_details": {
+    "gradcam_method": "Grad-CAM",
+    "target_layer": "MobileNetV2 conv_head (last convolutional layer)",
+    "faithfulness_metric": "Perturbation-based robustness score",
+    "image_preprocessing": "224x224 resize, ImageNet normalization"
+  }
+}

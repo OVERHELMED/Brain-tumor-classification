@@ -1,0 +1,79 @@
+{
+  "best_model": "Logistic Regression",
+  "model_parameters": {
+    "C": 10,
+    "max_iter": 2000,
+    "multi_class": "multinomial",
+    "solver": "lbfgs"
+  },
+  "validation_metrics": {
+    "accuracy": 0.9965,
+    "f1_macro": 0.9965
+  },
+  "test_metrics": {
+    "accuracy": 0.96186117467582,
+    "f1_macro": 0.9588683869155066,
+    "f1_micro": 0.96186117467582,
+    "roc_auc_ovr": 0.9954192107944184
+  },
+  "per_class_metrics": {
+    "precision": [
+      0.9745454545454545,
+      0.8918918918918919,
+      0.9765886287625418,
+      1.0
+    ],
+    "recall": [
+      0.8933333333333333,
+      0.9705882352941176,
+      0.9733333333333334,
+      0.9975308641975309
+    ],
+    "f1_score": [
+      0.9321739130434783,
+      0.9295774647887325,
+      0.9749582637729549,
+      0.9987639060568604
+    ],
+    "class_names": [
+      "glioma",
+      "meningioma",
+      "pituitary",
+      "notumor"
+    ]
+  },
+  "dataset_info": {
+    "total_samples": 14046,
+    "train_samples": 10281,
+    "val_samples": 1143,
+    "test_samples": 2622,
+    "num_classes": 4,
+    "feature_dimension": 1280
+  },
+  "confusion_matrix": [
+    [
+      536,
+      56,
+      8,
+      0
+    ],
+    [
+      12,
+      594,
+      6,
+      0
+    ],
+    [
+      2,
+      14,
+      584,
+      0
+    ],
+    [
+      0,
+      2,
+      0,
+      808
+    ]
+  ]
+}

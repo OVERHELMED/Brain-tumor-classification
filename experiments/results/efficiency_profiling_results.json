@@ -1,0 +1,65 @@
+{
+  "model_complexity": {
+    "total_parameters": 2223872,
+    "trainable_parameters": 2223872,
+    "flops": "305.73 MMac",
+    "input_size": 224
+  },
+  "latency_benchmark": {
+    "cpu": {
+      "mean_latency_ms": 21.87776517868042,
+      "std_latency_ms": 2.3561184543950846,
+      "throughput_ips": 45.708507785543205,
+      "min_latency_ms": 15.036344528198242,
+      "max_latency_ms": 29.438495635986328
+    }
+  },
+  "memory_footprint": {
+    "mobilenetv2_size_mb": 8.4833984375,
+    "classifier_size_mb": 0.039093017578125,
+    "total_model_size_mb": 8.522491455078125,
+    "inference_memory_mb": 0.0,
+    "feature_cache_sizes": {
+      "train_features_mb": 50.2001953125,
+      "val_features_mb": 5.5810546875,
+      "test_features_mb": 12.802734375
+    }
+  },
+  "input_size_ablation": {
+    "224": {
+      "parameters": 2223872,
+      "flops": "305.73 MMac",
+      "cpu_latency_ms": 20.96165657043457,
+      "cpu_throughput_ips": 47.70615321550745,
+      "gpu_latency_ms": null,
+      "gpu_throughput_ips": null,
+      "speedup_vs_224_cpu": 1.0,
+      "speedup_vs_224_gpu": 1.0
+    },
+    "192": {
+      "parameters": 2223872,
+      "flops": "224.61 MMac",
+      "cpu_latency_ms": 21.908347606658936,
+      "cpu_throughput_ips": 45.64470209958029,
+      "gpu_latency_ms": null,
+      "gpu_throughput_ips": null,
+      "speedup_vs_224_cpu": 0.9567885696711959,
+      "speedup_vs_224_gpu": 1.0
+    },
+    "160": {
+      "parameters": 2223872,
+      "flops": "155.98 MMac",
+      "cpu_latency_ms": 22.270708084106445,
+      "cpu_throughput_ips": 44.90202988712572,
+      "gpu_latency_ms": null,
+      "gpu_throughput_ips": null,
+      "speedup_vs_224_cpu": 0.9412209298093183,
+      "speedup_vs_224_gpu": 1.0
+    }
+  },
+  "training_efficiency": {
+    "classifier_training_time_seconds": 0.09039902687072754,
+    "training_samples": 1000,
+    "training_samples_per_second": 11062.065982524575
+  }
+}

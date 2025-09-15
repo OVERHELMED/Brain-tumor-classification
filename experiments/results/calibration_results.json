@@ -1,0 +1,107 @@
+{
+  "uncalibrated_metrics": {
+    "validation_ece": 0.0038532581892290778,
+    "validation_mce": 0.21153478046355834,
+    "test_ece": 0.031460381467370874,
+    "test_mce": 0.3706293771198268,
+    "test_brier_score": 0.035465219922854736,
+    "test_log_loss": 0.22503447867887094,
+    "macro_ece": 0.01817344624833433,
+    "class_ece_scores": [
+      0.02827567748697168,
+      0.03222858955240715,
+      0.01125983928971153,
+      0.0009296786642469687
+    ]
+  },
+  "calibrated_metrics": {
+    "test_ece": 0.0484163291264537,
+    "test_mce": 0.2749375737648194,
+    "test_brier_score": 0.041592631482073206,
+    "test_log_loss": 0.16844110938239526,
+    "macro_ece": 0.029787074098506207,
+    "class_ece_scores": [
+      0.02414571395037189,
+      0.04587195376349221,
+      0.018511025259254542,
+      0.03061960342090619
+    ]
+  },
+  "improvement": {
+    "ece_improvement": -0.01695594765908283,
+    "mce_improvement": 0.09569180335500738,
+    "brier_improvement": -0.006127411559218469,
+    "logloss_improvement": 0.05659336929647568
+  },
+  "threshold_analysis": {
+    "0.5": {
+      "threshold": 0.5,
+      "n_confident": "2612",
+      "coverage": 0.996186117467582,
+      "accuracy": 0.9617151607963247,
+      "f1_macro": 0.9585692307365913,
+      "f1_weighted": 0.9617523224296924,
+      "precision_per_class": "[0.97463768 0.90342679 0.96065574 1.        ]",
+      "recall_per_class": "[0.90572391 0.95394737 0.97666667 0.99753086]"
+    },
+    "0.6": {
+      "threshold": 0.6,
+      "n_confident": "2480",
+      "coverage": 0.9458428680396643,
+      "accuracy": 0.9725806451612903,
+      "f1_macro": 0.9699340778643714,
+      "f1_weighted": 0.9725618837779888,
+      "precision_per_class": "[0.98106061 0.93197279 0.96875    1.        ]",
+      "recall_per_class": "[0.92831541 0.96478873 0.9893617  0.99746835]"
+    },
+    "0.7": {
+      "threshold": 0.7,
+      "n_confident": "2374",
+      "coverage": 0.9054157131960335,
+      "accuracy": 0.9755686604886268,
+      "f1_macro": 0.9724990570697118,
+      "f1_weighted": 0.9755172649521335,
+      "precision_per_class": "[0.98054475 0.93233083 0.97802198 1.        ]",
+      "recall_per_class": "[0.92647059 0.97254902 0.99256506 1.        ]"
+    },
+    "0.8": {
+      "threshold": 0.8,
+      "n_confident": "2218",
+      "coverage": 0.8459191456903128,
+      "accuracy": 0.9801623083859333,
+      "f1_macro": 0.9771574013385086,
+      "f1_weighted": 0.980152740872733,
+      "precision_per_class": "[0.98360656 0.93991416 0.9844358  1.        ]",
+      "recall_per_class": "[0.94117647 0.97767857 0.99215686 1.        ]"
+    },
+    "0.9": {
+      "threshold": 0.9,
+      "n_confident": "1890",
+      "coverage": 0.7208237986270023,
+      "accuracy": 0.9925925925925926,
+      "f1_macro": 0.9910269131422977,
+      "f1_weighted": 0.9926056564518103,
+      "precision_per_class": "[1.         0.96511628 0.9954955  1.        ]",
+      "recall_per_class": "[0.97309417 1.         0.9954955  1.        ]"
+    },
+    "0.95": {
+      "threshold": 0.95,
+      "n_confident": "1598",
+      "coverage": 0.6094584286803967,
+      "accuracy": 0.9937421777221527,
+      "f1_macro": 0.9923758040765713,
+      "f1_weighted": 0.993741692732439,
+      "precision_per_class": "[1.         0.97014925 0.99489796 1.        ]",
+      "recall_per_class": "[0.97474747 1.         1.         1.        ]"
+    }
+  },
+  "class_names": [
+    "glioma",
+    "meningioma",
+    "pituitary",
+    "notumor"
+  ],
+  "calibration_method": "sigmoid_platt_scaling",
+  "calibration_fit_set": "validation",
+  "evaluation_set": "test"
+}

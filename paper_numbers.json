@@ -1,0 +1,46 @@
+{
+  "internal_accuracy": 0.9618,
+  "internal_macro_f1": 0.9589,
+  "internal_ece": 0.0484,
+  "internal_log_loss": 0.1684,
+  "external_macro_f1_baseline": 0.6751,
+  "external_accuracy_baseline": 0.7234,
+  "external_ece_baseline": 0.1296,
+  "external_macro_f1_adapted": 0.7842,
+  "external_accuracy_adapted": 0.7792,
+  "external_ece_adapted": 0.0958,
+  "glioma_recall_baseline_external": 0.23,
+  "glioma_recall_adapted_external": 0.58,
+  "thresholds_per_class": {
+    "glioma": 0.4185,
+    "meningioma": 0.3070,
+    "pituitary": 0.3295,
+    "notumor": 0.3275
+  },
+  "params_million": 2.2239,
+  "flops_mmac": 305.73,
+  "model_size_mb": 8.52,
+  "cpu_latency_ms_mean": 21.88,
+  "cpu_latency_ms_std": 2.36,
+  "throughput_ips": 45.71,
+  "per_class_f1_internal": {
+    "glioma": 0.9322,
+    "meningioma": 0.9296,
+    "pituitary": 0.9750,
+    "notumor": 0.9988
+  },
+  "per_class_f1_external_baseline": {
+    "glioma": 0.3680,
+    "meningioma": 0.8201,
+    "pituitary": 0.7227,
+    "notumor": 0.7895
+  },
+  "per_class_f1_external_adapted": {
+    "glioma": 0.6010,
+    "meningioma": 0.8063,
+    "pituitary": 0.8936,
+    "notumor": 0.8358
+  }
+}
+
+

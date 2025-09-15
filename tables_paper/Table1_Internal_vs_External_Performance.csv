@@ -1,0 +1,10 @@
+Metric,Internal,External Baseline,External Adapted
+Accuracy,96.2%,72.3%,77.9%
+Macro-F1,95.9%,67.5%,78.4%
+Glioma F1,93.2%,36.8%,60.1%
+Meningioma F1,93.0%,82.0%,80.6%
+Pituitary F1,97.5%,72.3%,89.4%
+No Tumor F1,99.9%,79.0%,83.6%
+ECE,0.048,0.130,0.096
+Log Loss,0.168,1.96,0.72
+

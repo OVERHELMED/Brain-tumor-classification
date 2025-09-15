@@ -1,0 +1,21 @@
+{
+  "class_to_label": {
+    "glioma": 0,
+    "meningioma": 1,
+    "pituitary": 2,
+    "notumor": 3
+  },
+  "label_to_class": {
+    "0": "glioma",
+    "1": "meningioma",
+    "2": "pituitary",
+    "3": "notumor"
+  },
+  "num_classes": 4,
+  "class_names": [
+    "glioma",
+    "meningioma",
+    "pituitary",
+    "notumor"
+  ]
+}

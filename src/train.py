@@ -14,6 +14,7 @@ import numpy as np
 from pathlib import Path
 
 from reproducibility import set_reproducible_environment, get_device, setup_mixed_precision, log_system_info
+from data_loader import create_data_loaders, get_class_weights
 
 
 def load_config(config_path: str = "configs/config.yaml") -> dict:
@@ -221,6 +222,10 @@ def main():
     # Setup reproducible environment
     device, scaler, config = setup_reproducible_training(config)
     
+    # Create data loaders
+    print("Creating data loaders...")
+    data_loaders = create_data_loaders(config)
+    
     # Create model
     model = create_model(config, device)
     
@@ -228,19 +233,33 @@ def main():
     optimizer = create_optimizer(model, config)
     scheduler = create_scheduler(optimizer, config)
     
-    # Loss function
-    criterion = nn.CrossEntropyLoss()
+    # Loss function (with class weights for imbalanced data)
+    class_weights = get_class_weights(config, data_loaders['train'].dataset.dataset)
+    class_weights = class_weights.to(device)
+    criterion = nn.CrossEntropyLoss(weight=class_weights)
     
+    print(f"Dataset: {config['data']['dataset_name']}")
+    print(f"Classes: {config['data']['classes']}")
     print(f"Model: {config['model']['name']}")
     print(f"Training for {config['training']['epochs']} epochs")
     print(f"Batch size: {config['data']['batch_size']}")
     print(f"Learning rate: {config['training']['learning_rate']}")
+    print(f"Training samples: {len(data_loaders['train'].dataset)}")
+    print(f"Validation samples: {len(data_loaders['val'].dataset)}")
+    print(f"Test samples: {len(data_loaders['test'].dataset)}")
     print("-" * 50)
     
     # Training loop would go here
     # For demonstration, we'll just print the setup
     print("Training setup completed successfully!")
-    print("Ready for data loading and training loop implementation.")
+    print("Ready for training loop implementation.")
+    
+    # Test data loading
+    print("\nTesting data loading...")
+    for split, loader in data_loaders.items():
+        for batch_idx, (images, labels) in enumerate(loader):
+            print(f"{split.capitalize()} batch {batch_idx}: images {images.shape}, labels {labels.shape}")
+            break
 
 
 if __name__ == "__main__":
