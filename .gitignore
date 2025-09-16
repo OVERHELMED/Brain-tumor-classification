@@ -44,12 +44,25 @@ venv.bak/
 *.pt
 *.ckpt
 
-# Data files (uncomment if data should not be tracked)
-# data/raw/
-# data/processed/
-# *.dcm
-# *.nii
-# *.nii.gz
+# Data files
+data/
+data/raw/
+data/processed/
+data/external_4c/
+data/brainmri_4c/
+*.dcm
+*.nii
+*.nii.gz
+*.jpg
+*.jpeg
+*.png
+*.tiff
+*.bmp
+*.npy
+*.npz
+*.mat
+*.csv
+*.json
 
 # Logs
 *.log
@@ -87,3 +100,82 @@ wandb/
 
 # MLflow
 mlruns/
+
+# Package managers and dependencies
+node_modules/
+package-lock.json
+yarn.lock
+.pnp
+.pnp.js
+
+# Python package management
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.nox/
+.coverage
+.pytest_cache/
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Conda
+.conda/
+*.conda
+environment.yml.lock
+
+# R packages
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+packrat/lib*/
+
+# Julia packages
+Manifest.toml
+
+# LaTeX auxiliary files
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc
+*.nav
+*.snm
+*.vrb
+*.xdv
+*.figlist
+*.makefile
+*.figlist
+*.fls
+*.fdb_latexmk
+
+# Compiled documents
+*.pdf
+*.dvi
+*.ps
+
+# Archive files
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# Large model files
+*.h5
+*.hdf5
+*.pkl
+*.pickle
+*.joblib
+*.model
+*.bin
+
+# Cache directories
+.cache/
+__pycache__/
+.pytest_cache/
+.mypy_cache/
