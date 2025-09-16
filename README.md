@@ -1,23 +1,53 @@
-# Reproducible Medical Imaging Project
+# Brain MRI Tumor Classification Research Project
 
-This project implements best practices for reproducibility in medical imaging research, following established reproducibility checklists and guidelines.
+A comprehensive, reproducible medical imaging research project implementing compute-efficient, calibrated, and explainable brain MRI tumor classification with rigorous external testing.
+
+## 🎯 Research Highlights
+
+- **High Performance**: 96.2% internal accuracy with MobileNetV2-based architecture
+- **External Validation**: Comprehensive testing on independent datasets with domain adaptation
+- **Clinical Readiness**: Calibrated predictions, explainable AI, and efficiency analysis
+- **Reproducible Science**: Complete methodology following IEEE standards
+- **Interactive Demo**: Real-time web interface for live classification
+
+## 🚀 Quick Start - Try the Demo!
+
+Experience our brain tumor classification model with the interactive web demo:
+
+```bash
+cd demo
+python start_demo.py
+```
+
+This launches a professional web interface where you can:
+- Upload MRI images via drag-and-drop
+- Get real-time tumor classification
+- View confidence scores and probabilities
+- See explainable AI visualizations
 
 ## Project Structure
 
 ```
-├── data/                    # Data storage
-│   ├── raw/                # Raw data files
-│   └── processed/          # Processed data files
-├── src/                    # Source code
-│   ├── reproducibility.py # Reproducibility utilities
-│   └── train.py           # Main training script
-├── configs/                # Configuration files
-│   └── config.yaml        # Main configuration
-├── experiments/            # Experiment artifacts
-│   ├── models/            # Saved models
-│   ├── logs/              # Training logs
-│   └── checkpoints/       # Model checkpoints
-├── figs/                   # Generated figures
+├── demo/                   # 🌐 Interactive Web Demo
+│   ├── app.py             # Flask backend server
+│   ├── templates/         # HTML templates
+│   ├── start_demo.py      # One-click demo launcher
+│   └── README.md          # Demo documentation
+├── data/                   # 📊 Research Datasets
+│   ├── brainmri_4c/       # Primary dataset (14,046 images)
+│   └── external_4c/       # External validation (394 images)
+├── src/                    # 🔬 Source Code
+│   ├── train.py           # Model training pipeline
+│   ├── step4_calibration.py # Temperature scaling
+│   ├── step5_explainability.py # Grad-CAM analysis
+│   └── step6_external_validation.py # Domain testing
+├── experiments/            # 📈 Research Results
+│   ├── models/            # Trained models (.pth files)
+│   └── results/           # Performance metrics (JSON)
+├── paper/                  # 📄 Research Publication
+│   ├── Manuscript_Improved.tex # IEEE-format paper
+│   └── *.pdf              # Generated publications
+├── figs/                   # 📊 Research Figures
 ├── requirements.txt        # Pinned dependencies
 └── README.md              # This file
 ```
