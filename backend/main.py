@@ -23,8 +23,12 @@ import io
 # Add the predictor module to path
 sys.path.append(str(Path(__file__).parent.parent / "predictor"))
 
-# Global model instance
+# Import medical validator
+from medical_validator import MedicalImageValidator
+
+# Global model instances
 model_instance = None
+medical_validator = None
 
 class BrainMRIPredictor:
     """Enhanced predictor class for API integration"""
@@ -87,13 +91,21 @@ class BrainMRIPredictor:
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Startup and shutdown events"""
-    global model_instance
+    global model_instance, medical_validator
     
     # Startup
     print("🚀 Starting Tony Stark Brain MRI API...")
+    
+    # Load medical image validator (Stage 1)
+    print("🔍 Loading Medical Image Validator...")
+    medical_validator = MedicalImageValidator()
+    
+    # Load brain MRI classifier (Stage 2)
+    print("🧠 Loading Brain MRI Classifier...")
     model_instance = BrainMRIPredictor()
     await model_instance.load_model()
-    print("⚡ JARVIS Neural Interface Online!")
+    
+    print("⚡ JARVIS Two-Stage Neural Interface Online!")
     
     yield
     
@@ -132,14 +144,15 @@ async def root():
 @app.get("/health")
 async def health_check():
     """Health check endpoint"""
-    global model_instance
+    global model_instance, medical_validator
     
     return {
-        "status": "healthy" if model_instance and model_instance.loaded else "loading",
-        "model_loaded": model_instance.loaded if model_instance else False,
+        "status": "healthy" if (model_instance and model_instance.loaded and medical_validator and medical_validator.loaded) else "loading",
+        "brain_mri_model_loaded": model_instance.loaded if model_instance else False,
+        "medical_validator_loaded": medical_validator.loaded if medical_validator else False,
         "load_time": model_instance.load_time if model_instance else None,
         "timestamp": time.time(),
-        "version": "1.0.0"
+        "version": "2.0.0 - Two-Stage Pipeline"
     }
 
 @app.get("/model-info")
@@ -167,11 +180,14 @@ async def predict_image(
     background_tasks: BackgroundTasks,
     file: UploadFile = File(...)
 ):
-    """Predict brain tumor type from MRI image"""
-    global model_instance
+    """Two-Stage Brain MRI Classification Pipeline"""
+    global model_instance, medical_validator
     
     if not model_instance or not model_instance.loaded:
-        raise HTTPException(status_code=503, detail="Model not loaded")
+        raise HTTPException(status_code=503, detail="Brain MRI model not loaded")
+    
+    if not medical_validator or not medical_validator.loaded:
+        raise HTTPException(status_code=503, detail="Medical validator not loaded")
     
     # Validate file type
     if not file.content_type.startswith('image/'):
@@ -191,8 +207,38 @@ async def predict_image(
             image.save(tmp_file.name, 'JPEG')
             temp_path = tmp_file.name
         
-        # Make prediction
+        # STAGE 1: Medical Image Validation
+        print(f"🔍 Stage 1: Validating medical image...")
+        validation_result = medical_validator.validate_medical_image(temp_path)
+        
+        if not validation_result.get('is_medical', False):
+            # Schedule cleanup
+            background_tasks.add_task(cleanup_temp_file, temp_path)
+            
+            return {
+                "success": False,
+                "error": "Please upload a valid brain MRI image. The uploaded image does not appear to be a medical scan.",
+                "validation_confidence": validation_result.get('confidence', 0.0),
+                "reasoning": validation_result.get('reasoning', 'Image validation failed'),
+                "stage": "medical_validation",
+                "timestamp": time.time()
+            }
+        
+        print(f"✅ Stage 1: Medical image validated (confidence: {validation_result['confidence']:.3f})")
+        
+        # STAGE 2: Brain Tumor Classification
+        print(f"🧠 Stage 2: Classifying brain tumor...")
         result = await model_instance.predict(temp_path)
+        
+        # Add validation info to result
+        if result.get('success', False):
+            result['medical_validation'] = {
+                'confidence': validation_result['confidence'],
+                'reasoning': validation_result.get('reasoning', ''),
+                'properties': validation_result.get('properties', {})
+            }
+            result['pipeline_stage'] = 'complete'
+            print(f"✅ Stage 2: Classification complete - {result.get('prediction', 'Unknown')}")
         
         # Schedule cleanup
         background_tasks.add_task(cleanup_temp_file, temp_path)
@@ -200,7 +246,8 @@ async def predict_image(
         return result
         
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Prediction failed: {str(e)}")
+        print(f"❌ Pipeline error: {e}")
+        raise HTTPException(status_code=500, detail=f"Two-stage pipeline failed: {str(e)}")
 
 @app.get("/system-stats")
 async def system_stats():

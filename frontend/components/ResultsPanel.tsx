@@ -21,6 +21,8 @@ interface ResultsPanelProps {
 
 export default function ResultsPanel({ results }: ResultsPanelProps) {
   if (!results.success) {
+    const isValidationError = results.error?.includes('valid brain MRI image')
+    
     return (
       <motion.div
         className="glass rounded-2xl p-8 border border-red-500/30 bg-red-500/10"
@@ -30,8 +32,22 @@ export default function ResultsPanel({ results }: ResultsPanelProps) {
       >
         <div className="text-center">
           <AlertTriangle className="w-16 h-16 text-red-400 mx-auto mb-4" />
-          <h2 className="text-2xl font-bold text-red-400 mb-2">ANALYSIS FAILED</h2>
-          <p className="text-gray-300">{results.error}</p>
+          <h2 className="text-2xl font-bold text-red-400 mb-4">
+            {isValidationError ? 'INVALID IMAGE TYPE' : 'ANALYSIS FAILED'}
+          </h2>
+          <p className="text-gray-300 mb-4">{results.error}</p>
+          
+          {isValidationError && (
+            <div className="glass rounded-lg p-4 border border-stark-amber/30 bg-stark-amber/10 mt-4">
+              <h4 className="text-stark-amber font-bold mb-2 font-mono">UPLOAD REQUIREMENTS:</h4>
+              <ul className="text-sm text-gray-300 space-y-1 font-mono text-left">
+                <li>• Brain MRI scans (T1-weighted preferred)</li>
+                <li>• Medical imaging formats (DICOM, JPG, PNG)</li>
+                <li>• Grayscale or medical imaging appearance</li>
+                <li>• Clear brain tissue visibility</li>
+              </ul>
+            </div>
+          )}
         </div>
       </motion.div>
     )

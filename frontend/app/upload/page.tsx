@@ -31,7 +31,7 @@ export default function UploadPage() {
         
         if (connected) {
           const health = await brainMRIAPI.healthCheck()
-          setModelReady(health.model_loaded)
+          setModelReady(health.brain_mri_model_loaded && health.medical_validator_loaded)
         }
       } catch (error) {
         console.error('Status check failed:', error)
