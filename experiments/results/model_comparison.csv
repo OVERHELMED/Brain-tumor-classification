@@ -1,4 +1,4 @@
 model,val_f1_macro,val_accuracy,test_accuracy,test_f1_macro,test_f1_micro,best_params
-Logistic Regression,0.9965,0.9965,0.96186117467582,0.9588683869155066,0.96186117467582,"{'C': 10, 'max_iter': 2000}"
+Logistic Regression,0.9965,0.9965,0.9603356216628528,0.9571224118441459,0.9603356216628528,"{'C': 10, 'max_iter': 2000}"
 Linear SVM,0.9901,0.9904,,,,{'C': 0.01}
 RBF SVM,0.9909,0.9913,,,,"{'C': 10, 'gamma': 'scale'}"

@@ -28,26 +28,28 @@ This launches a professional web interface where you can:
 ## Project Structure
 
 ```
-├── demo/                   # 🌐 Interactive Web Demo
-│   ├── app.py             # Flask backend server
-│   ├── templates/         # HTML templates
-│   ├── start_demo.py      # One-click demo launcher
-│   └── README.md          # Demo documentation
+├── research-materials/     # 📄 Publication & Documentation
+│   ├── paper/             # Generated PDFs and LaTeX files
+│   ├── figs_paper/        # Publication-ready figures
+│   ├── tables_paper/      # LaTeX-formatted tables
+│   ├── Manuscript_Improved.tex # Main IEEE-format paper
+│   ├── checklists/        # Research validation checklists
+│   └── submission/        # Submission guides and packages
 ├── data/                   # 📊 Research Datasets
 │   ├── brainmri_4c/       # Primary dataset (14,046 images)
 │   └── external_4c/       # External validation (394 images)
-├── src/                    # 🔬 Source Code
-│   ├── train.py           # Model training pipeline
+├── src/                    # 🔬 Source Code Pipeline
+│   ├── train_classical_classifiers.py # Main training script
+│   ├── extract_mobilenetv2_features.py # Feature extraction
 │   ├── step4_calibration.py # Temperature scaling
 │   ├── step5_explainability.py # Grad-CAM analysis
-│   └── step6_external_validation.py # Domain testing
+│   ├── step6_external_validation.py # Domain testing
+│   ├── step7_domain_adaptation.py # Adaptation strategies
+│   └── step8_efficiency_profiling.py # Performance analysis
 ├── experiments/            # 📈 Research Results
-│   ├── models/            # Trained models (.pth files)
+│   ├── models/            # Trained models (.pth, .pkl files)
 │   └── results/           # Performance metrics (JSON)
-├── paper/                  # 📄 Research Publication
-│   ├── Manuscript_Improved.tex # IEEE-format paper
-│   └── *.pdf              # Generated publications
-├── figs/                   # 📊 Research Figures
+├── figs/                   # 📊 Generated Research Figures
 ├── requirements.txt        # Pinned dependencies
 └── README.md              # This file
 ```

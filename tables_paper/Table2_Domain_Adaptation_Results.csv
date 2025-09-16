@@ -1,8 +1,0 @@
-Class,Baseline Recall,Adapted Recall,Optimized Threshold,Recall Improvement
-Glioma,23.0%,58.0%,0.418,+35.0%
-Meningioma,99.1%,88.7%,0.307,-10.4%
-Pituitary,58.1%,85.1%,0.330,+27.0%
-No Tumor,100.0%,80.0%,0.328,-20.0%
-
-
-
